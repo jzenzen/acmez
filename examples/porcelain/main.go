@@ -24,8 +24,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/mholt/acmez"
-	"github.com/mholt/acmez/acme"
+	"github.com/jzenzen/acmez"
+	"github.com/jzenzen/acmez/acme"
 	"go.uber.org/zap"
 )
 

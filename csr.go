@@ -19,7 +19,7 @@ import (
 	"encoding/asn1"
 	"errors"
 
-	"github.com/mholt/acmez/acme"
+	"github.com/jzenzen/acmez/acme"
 	"golang.org/x/crypto/cryptobyte"
 	cryptobyte_asn1 "golang.org/x/crypto/cryptobyte/asn1"
 )

@@ -38,7 +38,7 @@ import (
 	"net"
 	"testing"
 
-	"github.com/mholt/acmez/acme"
+	"github.com/jzenzen/acmez/acme"
 )
 
 // marshalOtherName marshals an otherName field with the given oid and value and

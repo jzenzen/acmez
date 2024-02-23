@@ -1,7 +1,6 @@
-acmez - ACME client library for Go
-==================================
+# acmez - ACME client library for Go
 
-[![godoc](https://pkg.go.dev/badge/github.com/mholt/acmez)](https://pkg.go.dev/github.com/mholt/acmez)
+[![godoc](https://pkg.go.dev/badge/github.com/jzenzen/acmez)](https://pkg.go.dev/github.com/jzenzen/acmez)
 
 ACMEz ("ack-measy" or "acme-zee", whichever you prefer) is a fully-compliant [RFC 8555](https://tools.ietf.org/html/rfc8555) (ACME) implementation in pure Go. It is lightweight, has an elegant Go API, and its retry logic is highly robust against external errors. ACMEz is suitable for large-scale enterprise deployments.
 
@@ -13,7 +12,6 @@ This module has two primary packages:
 - **`acme`** is a low-level RFC 8555 implementation that provides the fundamental ACME operations, mainly useful if you have advanced or niche requirements.
 
 In other words, the `acmez` package is **porcelain** while the `acme` package is **plumbing** (to use git's terminology).
-
 
 ## Features
 
@@ -30,18 +28,16 @@ In other words, the `acmez` package is **porcelain** while the `acme` package is
 - Supports niche aspects of RFC 8555 (such as alt cert chains and account key rollover)
 - Efficient solving of large SAN lists (e.g. for slow DNS record propagation)
 - Utility functions for solving challenges
-	- [Device attestation challenges](https://datatracker.ietf.org/doc/draft-acme-device-attest/)
-	- RFC 8737 (tls-alpn-01 challenge)
-
+  - [Device attestation challenges](https://datatracker.ietf.org/doc/draft-acme-device-attest/)
+  - RFC 8737 (tls-alpn-01 challenge)
 
 ## Examples
 
-See the [`examples` folder](https://github.com/mholt/acmez/tree/master/examples) for tutorials on how to use either package. **Most users should follow the [porcelain guide](https://github.com/mholt/acmez/blob/master/examples/porcelain/main.go) to get started.**
-
+See the [`examples` folder](https://github.com/jzenzen/acmez/tree/master/examples) for tutorials on how to use either package. **Most users should follow the [porcelain guide](https://github.com/jzenzen/acmez/blob/master/examples/porcelain/main.go) to get started.**
 
 ## Challenge solvers
 
-The `acmez` package is "bring-your-own-solver." It provides helper utilities for http-01, dns-01, and tls-alpn-01 challenges, but does not actually solve them for you. You must write or use an implementation of [`acmez.Solver`](https://pkg.go.dev/github.com/mholt/acmez#Solver) in order to get certificates. How this is done depends on your environment/situation.
+The `acmez` package is "bring-your-own-solver." It provides helper utilities for http-01, dns-01, and tls-alpn-01 challenges, but does not actually solve them for you. You must write or use an implementation of [`acmez.Solver`](https://pkg.go.dev/github.com/jzenzen/acmez#Solver) in order to get certificates. How this is done depends on your environment/situation.
 
 However, you can find [a general-purpose dns-01 solver in CertMagic](https://pkg.go.dev/github.com/caddyserver/certmagic#DNS01Solver), which uses [libdns](https://github.com/libdns) packages to integrate with numerous DNS providers. You can use it like this:
 
@@ -58,9 +54,7 @@ client := acmez.Client{
 }
 ```
 
-If you're implementing a tls-alpn-01 solver, the `acmez` package can help. It has the constant [`ACMETLS1Protocol`](https://pkg.go.dev/github.com/mholt/acmez#pkg-constants) which you can use to identify challenge handshakes by inspecting the ClientHello's ALPN extension. Simply complete the handshake using a certificate from the [`acmez.TLSALPN01ChallengeCert()`](https://pkg.go.dev/github.com/mholt/acmez#TLSALPN01ChallengeCert) function to solve the challenge.
-
-
+If you're implementing a tls-alpn-01 solver, the `acmez` package can help. It has the constant [`ACMETLS1Protocol`](https://pkg.go.dev/github.com/jzenzen/acmez#pkg-constants) which you can use to identify challenge handshakes by inspecting the ClientHello's ALPN extension. Simply complete the handshake using a certificate from the [`acmez.TLSALPN01ChallengeCert()`](https://pkg.go.dev/github.com/jzenzen/acmez#TLSALPN01ChallengeCert) function to solve the challenge.
 
 ## History
 
